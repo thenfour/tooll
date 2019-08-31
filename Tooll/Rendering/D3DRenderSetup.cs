@@ -140,7 +140,8 @@ namespace Framefield.Tooll.Rendering
             {
                 var context = new OperatorPartContext(
                                     _defaultContext,
-                                    (float)(App.Current.Model.GlobalTime + RenderConfig.TimeScrubOffset));
+                                    (float)(App.Current.Model.GlobalTime + RenderConfig.TimeScrubOffset),
+                                    App.Current.MainWindow.CompositionView);
 
                 var invalidator = new OperatorPart.InvalidateInvalidatables();
                 RenderConfig.Operator.Outputs[RenderConfig.ShownOutputIndex].TraverseWithFunctionUseSpecificBehavior(null, invalidator);

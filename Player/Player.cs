@@ -25,9 +25,27 @@ using Utilities = Framefield.Core.Utilities;
 
 namespace Framefield.Player
 {
-    internal class Player : IDisposable
+    internal class Player : IDisposable, Framefield.Core.IPlaySpeedProvider
     {
         public Settings ProjectSettings { get; private set; }
+
+        private double _playSpeed = 1.0;
+
+        public double PlaySpeed
+        {
+            get { return _playSpeed; }
+            private set
+            {
+                if (value == _playSpeed)
+                {
+                    return;
+                }
+                _playSpeed = value;
+                PlaySpeedChanged?.Invoke(this, null);
+            }
+        }
+
+        public event EventHandler PlaySpeedChanged;
 
         public bool Initialize(ContextSettings settings)
         {
@@ -184,11 +202,13 @@ namespace Framefield.Player
                 {
                     Bass.BASS_ChannelPause(_soundStream);
                     _globalTime.Stop();
+                    PlaySpeed = 0.0;
                 }
                 else
                 {
                     Bass.BASS_ChannelPlay(_soundStream, false);
                     _globalTime.Start();
+                    PlaySpeed = 1.0;
                 }
             }
             else if (e.KeyCode == Keys.Escape) {
@@ -243,7 +263,7 @@ namespace Framefield.Player
 
         private OperatorPartContext GetNewContext(float t = 0.0f)
         {
-            var context = new OperatorPartContext(_defaultContext, t);
+            var context = new OperatorPartContext(_defaultContext, t, this);
             context.D3DDevice = D3DDevice.Device;
             context.Effect = _renderer.SceneDefaultEffect;
             context.InputLayout = _renderer.SceneDefaultInputLayout;
@@ -420,11 +440,11 @@ namespace Framefield.Player
             Logger.Info("Starting ...");
             Bass.BASS_ChannelSetPosition(_soundStream, Bass.BASS_ChannelSeconds2Bytes(_soundStream, 0.0), BASSMode.BASS_POS_BYTES);
             Bass.BASS_ChannelPlay(_soundStream, false);
-
             _stopwatch.Start();
             _globalTime.Start();
+            PlaySpeed = 1.0;
 
-             RenderLoop.Run(_form, () => Update());
+            RenderLoop.Run(_form, () => Update());
         }
 
         private void Update() {

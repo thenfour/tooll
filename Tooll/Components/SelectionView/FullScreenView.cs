@@ -193,7 +193,7 @@ namespace Framefield.Tooll.Components.SelectionView
 
             try
             {
-                var context = new OperatorPartContext(_defaultContext, (float)CurrentTime);
+                var context = new OperatorPartContext(_defaultContext, (float)CurrentTime, App.Current.MainWindow.CompositionView);
 
                 if (Math.Abs(context.Time - _previousTime) > Constants.Epsilon)
                 {

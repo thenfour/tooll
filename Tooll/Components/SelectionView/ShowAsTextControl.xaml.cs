@@ -67,7 +67,8 @@ namespace Framefield.Tooll.Components.SelectionView
 
             try
             {
-                var context = new OperatorPartContext(_defaultContext, (float)App.Current.Model.GlobalTime);
+                var context = new OperatorPartContext(_defaultContext, (float)App.Current.Model.GlobalTime,
+                    App.Current.MainWindow.CompositionView);
 
                 // FIXME: the following lines are commented out to enable different values for debugOverlay-Variable
                 //if (context.Time != _previousTime)

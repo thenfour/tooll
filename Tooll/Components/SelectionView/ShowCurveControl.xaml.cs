@@ -57,7 +57,7 @@ namespace Framefield.Tooll.Components.SelectionView
             if (!IsVisible || _curveOp == null)
                 return;
 
-            var context = new OperatorPartContext(_defaultContext, (float) App.Current.Model.GlobalTime);
+            var context = new OperatorPartContext(_defaultContext, (float) App.Current.Model.GlobalTime, App.Current.MainWindow.CompositionView);
 
             if (Math.Abs(context.Time - _previousTime) > Constants.Epsilon)
             {

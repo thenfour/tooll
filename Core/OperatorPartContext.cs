@@ -26,6 +26,7 @@ namespace Framefield.Core
 
         public float Time { get; set; }
         public float GlobalTime { get; private set; }
+        public IPlaySpeedProvider PlaySpeedProvider { get; private set; }
         public Dictionary<string, float> Variables { get { return _variables; } }
         public Dictionary<string, object> Objects { get { return _objects; } }
         public float Value { get; set; }
@@ -59,7 +60,7 @@ namespace Framefield.Core
 
         public static OperatorPartContext createDefault(ContextSettings settings)
         {
-            var context = new OperatorPartContext(0.0f);
+            var context = new OperatorPartContext();
             context.D3DDevice = Core.D3DDevice.Device;
             context.Viewport = new ViewportF(0, 0, settings.DisplayMode.Width, settings.DisplayMode.Height);
             context.Variables.Add("Screensize.Width", settings.DisplayMode.Width);
@@ -71,10 +72,11 @@ namespace Framefield.Core
             return context;
         }
 
-        public OperatorPartContext(float globalTime = 0.0f)
+        public OperatorPartContext(float globalTime = 0.0f, IPlaySpeedProvider playSpeedProvider = null)
         {
             D3DDevice = Core.D3DDevice.Device;
             GlobalTime = globalTime;
+            PlaySpeedProvider = playSpeedProvider;
             Time = globalTime;
             Value = 0.0f;
             Text = "";
@@ -107,6 +109,7 @@ namespace Framefield.Core
         public OperatorPartContext(OperatorPartContext other)
         {
             GlobalTime = other.GlobalTime;
+            PlaySpeedProvider = other.PlaySpeedProvider;
             Time = other.Time;
             _variables = new Dictionary<string, float>(other._variables);
             _objects = new Dictionary<string, object>(other._objects);
@@ -139,10 +142,11 @@ namespace Framefield.Core
             ImageBufferFormat = other.ImageBufferFormat;
         }
 
-        public OperatorPartContext(OperatorPartContext other, float globalTime)
+        public OperatorPartContext(OperatorPartContext other, float globalTime, IPlaySpeedProvider playSpeedProvider)
             : this(other)
         {
             GlobalTime = globalTime;
+            PlaySpeedProvider = playSpeedProvider;
             Time = globalTime;
         }
 

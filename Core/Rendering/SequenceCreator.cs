@@ -37,7 +37,7 @@ namespace Framefield.Core.Rendering
                 _fileExtension = fileExtension.ToLower();
                 _skipExistingFiles = skipExistingFiles;
 
-                _defaultContext = new OperatorPartContext(0.0f);
+                _defaultContext = new OperatorPartContext(0.0f, null);
                 _defaultContext.Variables.Add("Screensize.Width", _width);
                 _defaultContext.Variables.Add("Screensize.Height", _height);
                 _defaultContext.Variables.Add("AspectRatio", (float) _width/_height);
@@ -104,7 +104,7 @@ namespace Framefield.Core.Rendering
                     foreach (var opPartFunction in _timeAccessorOpPartFunctions)
                         opPartFunction.OperatorPart.EmitChangedEvent();
 
-                    var context = new OperatorPartContext(_defaultContext, (float)_currentTime)
+                    var context = new OperatorPartContext(_defaultContext, (float)_currentTime, null)
                     {
                         D3DDevice = D3DDevice.Device,
                         Effect = _renderer.ScreenRenderEffect,

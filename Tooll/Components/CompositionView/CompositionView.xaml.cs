@@ -21,10 +21,12 @@ namespace Framefield.Tooll
     /// <summary>
     /// Interaction logic for CompositionView.xaml
     /// </summary>
-    public partial class CompositionView : UserControl
+    public partial class CompositionView : UserControl, Framefield.Core.IPlaySpeedProvider
     {
         #region Properties
         public CompositionGraphView CompositionGraphView { get { return XCompositionGraphView; } }
+
+        public event EventHandler PlaySpeedChanged;
 
         public double PlaySpeed {
             get { return m_PlaySpeed; }
@@ -42,6 +44,7 @@ namespace Framefield.Tooll
                     m_Stopwatch.Stop();
                     m_Timer.Stop();
                 }
+                PlaySpeedChanged?.Invoke(this, null);
             }
         }
         #endregion
