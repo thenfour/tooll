@@ -287,6 +287,12 @@
   <ItemGroup>
     <Folder Include="OpFuncs\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LibToollTenfour\LibToollTenfour\LibToollTenfour.csproj">
+      <Project>{446c4eaa-f429-49c2-a40d-f14eeca2c243}</Project>
+      <Name>LibToollTenfour</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>cmd /c $(SolutionDir)helper/getGitStatus.bat $(SolutionDir)/Helper "$(ProjectDir)"</PreBuildEvent>

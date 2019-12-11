@@ -19,6 +19,10 @@ namespace Framefield.Core
 
         public static bool IsSupplierAssembly(Type type)
         {
+          if (type == typeof(LibToollTenfour.LibToollTenfourAssembly))
+          {
+            return true;
+          }
             return type.IsClass && // must be a class
                    type.IsSubclassOf(typeof(SupplierAssembly)) &&
                    type.Assembly.GetName().Name != "Core" && // operators have their own namespace

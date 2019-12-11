@@ -143,6 +143,7 @@ namespace Framefield.Core
 
         public static IEnumerable<Tuple<Assembly, Type[]>> GetAssembliesAndTypesOfCurrentDomain()
         {
+      var x = new LibToollTenfour.GifFrameSource();// make sure this is loaded.
             var asmAndTypes = new List<Tuple<Assembly, Type[]>>();
 
             try

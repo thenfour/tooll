@@ -32,6 +32,11 @@ namespace Framefield.Core.Rendering
                 return "";
         }
 
+        public virtual Dictionary<string, string> GetCustomCodeSectionMapping(int codeIdx)
+        {
+            return null;
+        }
+
         public virtual void SetCode(int idx, string code)
         {
             if (idx < OperatorPart.Connections.Count)

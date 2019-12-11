@@ -1,0 +1,1455 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FFMediaToolkit</name>
+    </assembly>
+    <members>
+        <member name="T:FFMediaToolkit.Common.FFDictionary">
+            <summary>
+            Represents a wrapper of <see cref="T:FFmpeg.AutoGen.AVDictionary"/>. Used for applying codec and container settings.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.FFDictionary.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Common.FFDictionary"/> class.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.FFDictionary.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Common.FFDictionary"/> class.
+            </summary>
+            <param name="dictionary">The dictionary to copy.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.FFDictionary.#ctor(FFmpeg.AutoGen.AVDictionary*)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Common.FFDictionary"/> class from given <see cref="T:FFmpeg.AutoGen.AVDictionary"/>.
+            </summary>
+            <param name="dictionary">The <see cref="T:FFmpeg.AutoGen.AVDictionary"/>.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Common.FFDictionary.Count">
+            <summary>
+            Gets the number of elements in the dictionary.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Common.FFDictionary.Item(System.String)">
+            <summary>
+            Gets or sets the value with the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Common.FFDictionary.ToDictionary(FFmpeg.AutoGen.AVDictionary*,System.Boolean)">
+            <summary>
+            Converts a <see cref="T:FFmpeg.AutoGen.AVDictionary"/> to the managed string dictionary.
+            </summary>
+            <param name="dictionary">The <see cref="T:FFmpeg.AutoGen.AVDictionary"/> to converter.</param>
+            <param name="ignoreSuffix">If set the flag <see cref="F:FFmpeg.AutoGen.ffmpeg.AV_DICT_IGNORE_SUFFIX"/> will be used.</param>
+            <returns>The converted <see cref="T:System.Collections.Generic.Dictionary`2"/>.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Common.FFDictionary.Get(System.String,System.Boolean)">
+            <summary>
+            Gets the value with specified key.
+            </summary>
+            <param name="key">The dictionary key.</param>
+            <param name="matchCase">If <see langword="true"/> matches case.</param>
+            <returns>The value with specified key. If the key not exist, returns <see langword="null"/>.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Common.FFDictionary.Set(System.String,System.String)">
+            <summary>
+            Sets the value for the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.FFDictionary.Copy(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Copies items from specified dictionary to this <see cref="T:FFMediaToolkit.Common.FFDictionary"/>.
+            </summary>
+            <param name="dictionary">The dictionary to copy.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.FFDictionary.Update(FFmpeg.AutoGen.AVDictionary*)">
+            <summary>
+            Updates the pointer to the dictionary.
+            </summary>
+            <param name="pointer">The pointer to the <see cref="T:FFmpeg.AutoGen.AVDictionary"/>.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.FFDictionary.OnDisposing">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Common.Internal.ImageConverter">
+            <summary>
+            A class used to convert ffmpeg <see cref="T:FFmpeg.AutoGen.AVFrame"/>s to <see cref="T:FFMediaToolkit.Graphics.ImageData"/> objects with specified image size and color format.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.ImageConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Common.Internal.ImageConverter"/> class.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.ImageConverter.FillAVFrame(FFMediaToolkit.Graphics.ImageData,FFMediaToolkit.Common.Internal.VideoFrame)">
+            <summary>
+            Overrides the <paramref name="destinationFrame"/> image buffer with the converted <see cref="T:FFMediaToolkit.Graphics.ImageData"/> bitmap. Used in encoding.
+            </summary>
+            <param name="bitmap">The input bitmap.</param>
+            <param name="destinationFrame">The <see cref="T:FFmpeg.AutoGen.AVFrame"/> to override.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.ImageConverter.AVFrameToBitmap(FFMediaToolkit.Common.Internal.VideoFrame,FFMediaToolkit.Graphics.ImageData)">
+            <summary>
+            Converts a video <see cref="T:FFmpeg.AutoGen.AVFrame"/> to the specified <see cref="T:FFMediaToolkit.Graphics.ImageData"/> bitmap. Used in decoding.
+            </summary>
+            <param name="videoFrame">The video frame to convert.</param>
+            <param name="destination">The destination <see cref="T:FFMediaToolkit.Graphics.ImageData"/>.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.ImageConverter.OnDisposing">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Common.Internal.MediaFrame">
+            <summary>
+            Represents a base class of audio and video frames.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.MediaFrame.#ctor(FFmpeg.AutoGen.AVFrame*)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Common.Internal.MediaFrame"/> class.
+            </summary>
+            <param name="frame">The <see cref="T:FFmpeg.AutoGen.AVFrame"/> object.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Common.Internal.MediaFrame.PresentationTime">
+            <summary>
+            Gets or sets the frame PTS value in the stream time base units.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.MediaFrame.Update(FFmpeg.AutoGen.AVFrame*)">
+            <summary>
+            Changes the pointer to the media frame.
+            </summary>
+            <param name="newFrame">The new pointer to a <see cref="T:FFmpeg.AutoGen.AVFrame"/> object.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.MediaFrame.OnDisposing">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Common.Internal.MediaPacket">
+            <summary>
+            Represents a FFMpeg media packet.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.MediaPacket.#ctor(FFmpeg.AutoGen.AVPacket*)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Common.Internal.MediaPacket"/> class.
+            </summary>
+            <param name="packet">The <see cref="T:FFmpeg.AutoGen.AVPacket"/> object.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Common.Internal.MediaPacket.IsKeyPacket">
+            <summary>
+            Gets or sets a value indicating whether this packet is a key packet.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Common.Internal.MediaPacket.StreamIndex">
+            <summary>
+            Gets the stream index.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Common.Internal.MediaPacket.Timestamp">
+            <summary>
+            Gets the presentation time stamp of the packet. <see langword="null"/> if is <c>AV_NOPTS_VALUE</c>.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.MediaPacket.op_Implicit(FFMediaToolkit.Common.Internal.MediaPacket)~FFmpeg.AutoGen.AVPacket*">
+            <summary>
+            Converts an instance of <see cref="T:FFMediaToolkit.Common.Internal.MediaPacket"/> to the unmanaged pointer.
+            </summary>
+            <param name="packet">A <see cref="T:FFMediaToolkit.Common.Internal.MediaPacket"/> instance.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.MediaPacket.AllocateEmpty(System.Int32)">
+            <summary>
+            Allocates a new empty packet.
+            </summary>
+            <param name="streamIndex">The packet stream index.</param>
+            <returns>The new <see cref="T:FFMediaToolkit.Common.Internal.MediaPacket"/>.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.MediaPacket.RescaleTimestamp(FFmpeg.AutoGen.AVRational,FFmpeg.AutoGen.AVRational)">
+            <summary>
+            Sets valid PTS/DTS values. Used only in encoding.
+            </summary>
+            <param name="codecTimeBase">The encoder time base.</param>
+            <param name="streamTimeBase">The time base of media stream.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.MediaPacket.Wipe">
+            <summary>
+            Wipes the packet data.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.MediaPacket.OnDisposing">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Common.Internal.MediaType">
+            <summary>
+            Represents the multimedia stream types.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Common.Internal.MediaType.None">
+            <summary>
+            Other media type not supported by the FFMediaToolkit.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Common.Internal.MediaType.Video">
+            <summary>
+            Video.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Common.Internal.MediaType.Audio">
+            <summary>
+            Audio.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Common.Internal.VideoFrame">
+            <summary>
+            Represent a video frame.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.VideoFrame.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Common.Internal.VideoFrame"/> class with empty frame data.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.VideoFrame.#ctor(FFmpeg.AutoGen.AVFrame*)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Common.Internal.VideoFrame"/> class using existing <see cref="T:FFmpeg.AutoGen.AVFrame"/>.
+            </summary>
+            <param name="frame">The video <see cref="T:FFmpeg.AutoGen.AVFrame"/>.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Common.Internal.VideoFrame.Layout">
+            <summary>
+            Gets the frame dimensions.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Common.Internal.VideoFrame.PixelFormat">
+            <summary>
+            Gets the frame pixel format.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.VideoFrame.Create(System.Drawing.Size,FFmpeg.AutoGen.AVPixelFormat)">
+            <summary>
+            Creates a video frame with given dimensions and allocates a buffer for it.
+            </summary>
+            <param name="dimensions">The dimensions of the video frame.</param>
+            <param name="pixelFormat">The video pixel format.</param>
+            <returns>The new video frame.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.VideoFrame.CreateEmpty">
+            <summary>
+            Creates an empty frame for decoding.
+            </summary>
+            <returns>The empty <see cref="T:FFMediaToolkit.Common.Internal.VideoFrame"/>.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.VideoFrame.UpdateFromBitmap(FFMediaToolkit.Graphics.ImageData,FFMediaToolkit.Common.Internal.ImageConverter)">
+            <summary>
+            Overrides this video frame data with the converted <paramref name="bitmap"/> using specified <see cref="T:FFMediaToolkit.Common.Internal.ImageConverter"/> object.
+            </summary>
+            <param name="bitmap">The bitmap to convert.</param>
+            <param name="scaler">A <see cref="T:FFMediaToolkit.Common.Internal.ImageConverter"/> object, used for caching the FFMpeg <see cref="T:FFmpeg.AutoGen.SwsContext"/> when converting many frames of the same video.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.VideoFrame.ToBitmap(FFMediaToolkit.Common.Internal.ImageConverter,FFMediaToolkit.Graphics.ImagePixelFormat)">
+            <summary>
+            Converts this video frame to the <see cref="T:FFMediaToolkit.Graphics.ImageData"/> with the specified pixel format.
+            </summary>
+            <param name="scaler">A <see cref="T:FFMediaToolkit.Common.Internal.ImageConverter"/> object, used for caching the FFMpeg <see cref="T:FFmpeg.AutoGen.SwsContext"/> when converting many frames of the same video.</param>
+            <param name="targetFormat">The output bitmap pixel format.</param>
+            <returns>A <see cref="T:FFMediaToolkit.Graphics.ImageData"/> instance containg converted bitmap data.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Internal.VideoFrame.Update(FFmpeg.AutoGen.AVFrame*)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Common.Wrapper`1">
+            <summary>
+            A base class for wrappers of unmanaged objects with <see cref="T:System.IDisposable"/> implementation.
+            </summary>
+            <typeparam name="T">The type of the unmanaged object.</typeparam>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Wrapper`1.#ctor(`0*)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Common.Wrapper`1"/> class.
+            </summary>
+            <param name="pointer">A pointer to a unmanaged object.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Wrapper`1.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:FFMediaToolkit.Common.Wrapper`1"/> class.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Common.Wrapper`1.Pointer">
+            <summary>
+            Gets a pointer to the underlying object.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Wrapper`1.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Wrapper`1.UpdatePointer(`0*)">
+            <summary>
+            Updates the pointer to the object.
+            </summary>
+            <param name="newPointer">The new pointer.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Common.Wrapper`1.OnDisposing">
+            <summary>
+            Free the unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.ContainerOptions">
+            <summary>
+            Represents a set of demuxer options and flags.
+            See https://ffmpeg.org/ffmpeg-formats.html#Format-Options.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.ContainerOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Decoding.ContainerOptions"/> class with the default settings.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.ContainerOptions.FlagDiscardCorrupt">
+            <summary>
+            Discard corrupted packets.
+            Port of 'discardcorrupt'.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.ContainerOptions.FlagEnableFastSeek">
+            <summary>
+            Enable fast, but inaccurate seeks for some formats.
+            Port of 'fastseek'.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.ContainerOptions.FlagEnableNoFillIn">
+            <summary>
+            Do not fill in missing values that can be exactly calculated.
+            Port of 'nofillin'.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.ContainerOptions.FlagGeneratePts">
+            <summary>
+            Generate missing PTS if DTS is present.
+            Port of 'genpts'.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.ContainerOptions.FlagIgnoreDts">
+            <summary>
+            Ignore DTS if PTS is set.
+            Port of 'igndts'.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.ContainerOptions.FlagIgnoreIndex">
+            <summary>
+            Ignore index.
+            Port of 'ignidx'.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.ContainerOptions.FlagNoBuffer">
+            <summary>
+            Reduce the latency introduced by optional buffering.
+            Port of 'nobuffer'.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.ContainerOptions.FlagSortDts">
+            <summary>
+            Try to interleave output packets by DTS.
+            Port of 'sortdts'.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.ContainerOptions.SeekToAny">
+            <summary>
+            Allow seeking to non-keyframes on demuxer level when supported.
+            Port of seek2any.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.ContainerOptions.PrivateOptions">
+            <summary>
+            Gets or sets the private demuxer-specific options.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.ContainerOptions.ApplyFlags(FFmpeg.AutoGen.AVFormatContext*)">
+            <summary>
+            Applies flag settings specified in this class to an instance of <see cref="T:FFmpeg.AutoGen.AVFormatContext"/>.
+            </summary>
+            <param name="formatContext">An empty instance of <see cref="T:FFmpeg.AutoGen.AVFormatContext"/> before opening the stream.</param>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.Internal.InputContainer">
+            <summary>
+            Represents the multimedia file container.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.Internal.InputContainer.Video">
+            <summary>
+            Gets the video stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.Internal.InputContainer.IsAtEndOfFile">
+            <summary>
+            Gets a value indicating whether the reader is at end of the file.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.LoadFile(System.String,FFMediaToolkit.Decoding.MediaOptions)">
+            <summary>
+            Opens a media container and stream codecs from given path.
+            </summary>
+            <param name="path">A path to the multimedia file.</param>
+            <param name="options">The media settings.</param>
+            <returns>A new instance of the <see cref="T:FFMediaToolkit.Decoding.Internal.InputContainer"/> class.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.ReadPacket">
+            <summary>
+            Reads the next packet from this file and sends it to the packet queue.
+            </summary>
+            <returns>Type of the readed packet.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.SeekFile(System.Int32)">
+            <summary>
+            Seeks stream to the specified video frame.
+            </summary>
+            <param name="frameNumber">The target video frame number.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.SeekFile(System.Int64)">
+            <summary>
+            Seeks stream to the specified target timestamp.
+            </summary>
+            <param name="targetTs">The target timestamp in the default stream time base.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.SeekForward(System.Int32)">
+            <summary>
+            Seeks stream by skipping next packets in the file. Useful to seek few frames forward.
+            </summary>
+            <param name="frameNumber">The target video frame number.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.SeekForward(System.Int64)">
+            <summary>
+            Seeks stream by skipping next packets in the file. Useful to seek few frames forward.
+            </summary>
+            <param name="targetTs">The target timestamp in the default stream time base.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.OnDisposing">
+            <inheritdoc/>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.FindBestStream(FFmpeg.AutoGen.AVFormatContext*,FFmpeg.AutoGen.AVMediaType,System.Int32)">
+            <summary>
+            Finds the best stream of the specified type in the file.
+            </summary>
+            <param name="container">The media container.</param>
+            <param name="type">Type of the stream to find.</param>
+            <param name="relStream">Optional. Index of the related stream.</param>
+            <returns>Index of the found stream, otherwise <see langword="null"/>.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.EnqueuePacket(FFMediaToolkit.Common.Internal.MediaPacket)">
+            <summary>
+            Sends a packet to the appropriate queue.
+            </summary>
+            <param name="packet">The packet to send.</param>
+            <returns>The detected type of the packet.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.OpenStreams(FFMediaToolkit.Decoding.MediaOptions)">
+            <summary>
+            Opens the streams in the file using the specified <see cref="T:FFMediaToolkit.Decoding.MediaOptions"/>.
+            </summary>
+            <param name="options">The <see cref="T:FFMediaToolkit.Decoding.MediaOptions"/> object.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputContainer.AddPacket(FFMediaToolkit.Common.Internal.MediaType)">
+            <summary>
+            Handles the request to send one (or more) packet of the specified type to the decoder queue.
+            </summary>
+            <param name="type">The type of media packet.</param>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.Internal.InputStreamFactory">
+            <summary>
+            Contains method for opening media streams.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputStreamFactory.OpenVideo(FFMediaToolkit.Decoding.Internal.InputContainer,System.Int32,FFMediaToolkit.Decoding.MediaOptions)">
+            <summary>
+            Opens the video stream with the specified index in the media container.
+            </summary>
+            <param name="container">The media container.</param>
+            <param name="index">The video stream index.</param>
+            <param name="options">The media options.</param>
+            <returns>The opened <see cref="T:FFMediaToolkit.Decoding.Internal.InputStream`1"/>.</returns>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.Internal.InputStream`1">
+            <summary>
+            Represents a input multimedia stream.
+            </summary>
+            <typeparam name="TFrame">The type of frames in the stream.</typeparam>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputStream`1.#ctor(FFmpeg.AutoGen.AVStream*,FFMediaToolkit.Decoding.Internal.InputContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Decoding.Internal.InputStream`1"/> class.
+            </summary>
+            <param name="stream">The multimedia stream.</param>
+            <param name="owner">The container that owns the stream.</param>
+        </member>
+        <member name="E:FFMediaToolkit.Decoding.Internal.InputStream`1.PacketsNeeded">
+            <summary>
+            Ocurrs when sending next packet from the file is required.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.Internal.InputStream`1.OwnerFile">
+            <summary>
+            Gets the media container that owns this stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.Internal.InputStream`1.CodecPointer">
+            <summary>
+            Gets a pointer to <see cref="T:FFmpeg.AutoGen.AVCodecContext"/> for this stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.Internal.InputStream`1.Type">
+            <summary>
+            Gets the type of this stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.Internal.InputStream`1.Info">
+            <summary>
+            Gets informations about the stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.Internal.InputStream`1.DecodedFrame">
+            <summary>
+            Gets the recently decoded frame.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputStream`1.FetchPacket(FFMediaToolkit.Common.Internal.MediaPacket)">
+            <summary>
+            Adds a packet readed from the file to the internal decoder queue.
+            </summary>
+            <param name="packet">A media packet.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputStream`1.GetNextFrame">
+            <summary>
+            Reads the next frame from the stream.
+            </summary>
+            <returns>The decoded frame.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputStream`1.AdjustPackets(System.Int64)">
+            <summary>
+            Deletes the packet with the timestamp smaller than the specified.
+            </summary>
+            <param name="targetTs">The timestamp.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputStream`1.FlushBuffers">
+            <summary>
+            Flushes the codec buffers.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputStream`1.ClearQueue">
+            <summary>
+            Clears the packet queue.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.Internal.InputStream`1.OnDisposing">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.MediaChapter">
+            <summary>
+            Represents a chapter in a media file.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.MediaChapter.#ctor(System.TimeSpan,System.TimeSpan,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Decoding.MediaChapter"/> class.
+            </summary>
+            <param name="start">The starting time of this chapter.</param>
+            <param name="end">The ending time of this chapter.</param>
+            <param name="metadata">This chapter's metadata.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaChapter.StartTime">
+            <summary>
+            Gets the start time of this chapter.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaChapter.EndTime">
+            <summary>
+            Gets the end time of this chapter.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaChapter.Duration">
+            <summary>
+            Gets the duration of this chapter.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaChapter.Metadata">
+            <summary>
+            Gets the metadata for this chapter (such as name).
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.MediaFile">
+            <summary>
+            Represents a multimedia file.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaFile.Video">
+            <summary>
+            Gets the video stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaFile.HasVideo">
+            <summary>
+            Gets a value indicating whether the file contains video stream and the stream is loaded.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaFile.Info">
+            <summary>
+            Gets informations about the media container.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.MediaFile.Open(System.String)">
+            <summary>
+            Opens a media file from the specified path with default settings.
+            </summary>
+            <param name="path">A path to the media file.</param>
+            <returns>The opened <see cref="T:FFMediaToolkit.Decoding.MediaFile"/>.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.MediaFile.Open(System.String,FFMediaToolkit.Decoding.MediaOptions)">
+            <summary>
+            Opens a media file from the specified path.
+            </summary>
+            <param name="path">A path to the media file.</param>
+            <param name="options">The decoder settings.</param>
+            <returns>The opened <see cref="T:FFMediaToolkit.Decoding.MediaFile"/>.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.MediaFile.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.MediaInfo">
+            <summary>
+            Contains informations about the media container.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.MediaInfo.#ctor(FFmpeg.AutoGen.AVFormatContext*)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Decoding.MediaInfo"/> class.
+            </summary>
+            <param name="container">The input container context.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaInfo.FilePath">
+            <summary>
+            Gets the file path used to open the container.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaInfo.FileInfo">
+            <summary>
+            Gets a <see cref="T:System.IO.FileInfo"/> object for the media file.
+            It contains file size, directory, last acces, creation and write timestamps.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaInfo.ContainerFormat">
+            <summary>
+            Gets the container format name.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaInfo.Bitrate">
+            <summary>
+            Gets the container bitrate in bytes per second (B/s) units. 0 if unknow.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaInfo.Duration">
+            <summary>
+            Gets the duration of the media container.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaInfo.StartTime">
+            <summary>
+            Gets the start time of the media container.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaInfo.Metadata">
+            <summary>
+            Gets the container file metadata. Streams may contain additional metadata.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaInfo.Chapters">
+            <summary>
+            Gets a collection of chapters existing in the media file.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.MediaMode">
+            <summary>
+            Represents the audio/video streams loading modes.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Decoding.MediaMode.AudioVideo">
+            <summary>
+            Enables loading both audio and video streams if exists.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Decoding.MediaMode.Video">
+            <summary>
+            Enables loading only video stream.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Decoding.MediaMode.Audio">
+            <summary>
+            Enables loading only audio stream.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.MediaOptions">
+            <summary>
+            Represents the multimedia file container options.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.MediaOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Decoding.MediaOptions"/> class.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaOptions.DemuxerOptions">
+            <summary>
+            Gets or sets the demuxer settings.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaOptions.VideoPixelFormat">
+            <summary>
+            Gets or sets the target pixel format for decoded video frames conversion. The default value is <c>Bgr24</c>.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaOptions.TargetVideoSize">
+            <summary>
+            Gets or sets the target video size for decoded video frames conversion. <see langword="null"/>, if no rescale.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaOptions.VideoSeekThreshold">
+            <summary>
+            Gets or sets the threshold value used to choose the best seek method. Set this to video GoP value (if know) to improve stream seek performace.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaOptions.DecoderThreads">
+            <summary>
+            Gets or sets the number of decoder threads (by the 'threads' flag). The default value is <see langword="null"/> - 'auto'.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaOptions.DecoderOptions">
+            <summary>
+            Gets or sets the dictionary with global options for the multimedia decoders.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.MediaOptions.StreamsToLoad">
+            <summary>
+            Gets or sets which streams (audio/video) will be loaded.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.StreamInfo">
+            <summary>
+            Represents informations about the video stream.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.StreamInfo.#ctor(FFmpeg.AutoGen.AVStream*,FFMediaToolkit.Decoding.Internal.InputContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Decoding.StreamInfo"/> class.
+            </summary>
+            <param name="stream">The video stram.</param>
+            <param name="container">The input container.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.Index">
+            <summary>
+            Gets the stream index.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.CodecName">
+            <summary>
+            Gets the codec name.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.CodecId">
+            <summary>
+            Gets the codec identifier.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.IsInterlaced">
+            <summary>
+            Gets a value indicating whether the frames in the stream are interlaced.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.FrameRate">
+            <summary>
+            Gets the stream frame rate as a <see cref="T:System.Double"/> value.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.RFrameRate">
+            <summary>
+            Gets the frame rate as a <see cref="T:FFmpeg.AutoGen.AVRational"/> value.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.TimeBase">
+            <summary>
+            Gets the stream time base.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.FrameSize">
+            <summary>
+            Gets the video frame dimensions.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.PixelFormat">
+            <summary>
+            Gets the video pixel format.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.FrameCount">
+            <summary>
+            Gets the estimated number of frames in the stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.Duration">
+            <summary>
+            Gets the stream duration.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.StartTime">
+            <summary>
+            Gets the stream start time. Null if undefined.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.StreamInfo.Metadata">
+            <summary>
+            Gets the stream metadata.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Decoding.VideoStream">
+            <summary>
+            Represents a video stream in the <see cref="T:FFMediaToolkit.Decoding.MediaFile"/>.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.VideoStream.#ctor(FFMediaToolkit.Decoding.Internal.InputStream{FFMediaToolkit.Common.Internal.VideoFrame},FFMediaToolkit.Decoding.MediaOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Decoding.VideoStream"/> class.
+            </summary>
+            <param name="video">The video stream.</param>
+            <param name="options">The decoder settings.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.VideoStream.Info">
+            <summary>
+            Gets informations about this stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.VideoStream.FramePosition">
+            <summary>
+            Gets the index of the next frame in the video stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Decoding.VideoStream.Position">
+            <summary>
+            Gets the timestamp of the next frame in the video stream.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.VideoStream.ReadFrame(System.Int32)">
+            <summary>
+            Reads the specified video frame.
+            </summary>
+            <param name="frameNumber">The frame index (zero-based number).</param>
+            <returns>The decoded video frame.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.VideoStream.ReadFrame(System.TimeSpan)">
+            <summary>
+            Reads the video frame found at the specified timestamp.
+            </summary>
+            <param name="targetTime">The frame timestamp.</param>
+            <returns>The decoded video frame.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.VideoStream.ReadNextFrame">
+            <summary>
+            Reads the next frame from this stream.
+            </summary>
+            <returns>The decoded video frame.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Decoding.VideoStream.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Encoding.Internal.OutputContainer">
+            <summary>
+            Represents the multimedia file container used for encoding.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.Internal.OutputContainer.Video">
+            <summary>
+            Gets the video stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.Internal.OutputContainer.IsFileCreated">
+            <summary>
+            Gets a value indicating whether the file is created.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.Internal.OutputContainer.Create(System.String)">
+            <summary>
+            Creates an empty FFmpeg format container for encoding.
+            </summary>
+            <param name="path">A output file path. It is used only to guess the container format.</param>
+            <returns>A new instance of the <see cref="T:FFMediaToolkit.Encoding.Internal.OutputContainer"/>.</returns>
+            <remarks>Before you write frames to the container, you must call the <see cref="M:FFMediaToolkit.Encoding.Internal.OutputContainer.CreateFile(System.String)"/> method to create an ouput file.</remarks>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.Internal.OutputContainer.AddVideoStream(FFMediaToolkit.Encoding.VideoEncoderSettings)">
+            <summary>
+            Adds a new video stream to the container. Usable only in encoding, before locking file.
+            </summary>
+            <param name="config">The stream configuration.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.Internal.OutputContainer.CreateFile(System.String)">
+            <summary>
+            Creates a media file for this container and writes format header into it. Usable only in encoding.
+            </summary>
+            <param name="path">A path to create the file.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.Internal.OutputContainer.WritePacket(FFMediaToolkit.Common.Internal.MediaPacket)">
+            <summary>
+            Writes the specified packet to the container by the <see cref="M:FFmpeg.AutoGen.ffmpeg.av_interleaved_write_frame(FFmpeg.AutoGen.AVFormatContext*,FFmpeg.AutoGen.AVPacket*)"/> method.
+            </summary>
+            <param name="packet">The media packet to write.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.Internal.OutputContainer.OnDisposing">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Encoding.Internal.OutputStreamFactory">
+            <summary>
+            Contains method for creating media streams.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.Internal.OutputStreamFactory.CreateVideo(FFMediaToolkit.Encoding.Internal.OutputContainer,FFMediaToolkit.Encoding.VideoEncoderSettings)">
+            <summary>
+            Creates a new video stream for the specified <see cref="T:FFMediaToolkit.Encoding.Internal.OutputContainer"/>.
+            </summary>
+            <param name="container">The media container.</param>
+            <param name="config">The stream settings.</param>
+            <returns>The new video stream.</returns>
+        </member>
+        <member name="T:FFMediaToolkit.Encoding.Internal.OutputStream`1">
+            <summary>
+            Represents a output multimedia stream.
+            </summary>
+            <typeparam name="TFrame">The type of frames in the stream.</typeparam>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.Internal.OutputStream`1.#ctor(FFmpeg.AutoGen.AVStream*,FFMediaToolkit.Encoding.Internal.OutputContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Encoding.Internal.OutputStream`1"/> class.
+            </summary>
+            <param name="stream">The multimedia stream.</param>
+            <param name="owner">The container that owns the stream.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.Internal.OutputStream`1.OwnerFile">
+            <summary>
+            Gets the media container that owns this stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.Internal.OutputStream`1.CodecPointer">
+            <summary>
+            Gets a pointer to <see cref="T:FFmpeg.AutoGen.AVCodecContext"/> for this stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.Internal.OutputStream`1.Index">
+            <summary>
+            Gets the stream index.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.Internal.OutputStream`1.TimeBase">
+            <summary>
+            Gets the stream time base.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.Internal.OutputStream`1.Push(`0)">
+            <summary>
+            Writes the specified frame to this stream.
+            </summary>
+            <param name="frame">The media frame.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.Internal.OutputStream`1.OnDisposing">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Encoding.MediaBuilder">
+            <summary>
+            Represents a multimedia file creator.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.MediaBuilder.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Encoding.MediaBuilder"/> class.
+            </summary>
+            <param name="path">The output media file path.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.MediaBuilder.WithVideo(FFMediaToolkit.Encoding.VideoEncoderSettings)">
+            <summary>
+            Adds a new video stream to the file.
+            </summary>
+            <param name="settings">The video stream settings.</param>
+            <returns>This <see cref="T:FFMediaToolkit.Encoding.MediaBuilder"/> object.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.MediaBuilder.Create">
+            <summary>
+            Creates a multimedia file for specified video stream.
+            </summary>
+            <returns>A new <see cref="T:FFMediaToolkit.Encoding.MediaOutput"/>.</returns>
+        </member>
+        <member name="T:FFMediaToolkit.Encoding.MediaOutput">
+            <summary>
+            Represents a multimedia output file.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.MediaOutput.#ctor(FFMediaToolkit.Encoding.Internal.OutputContainer,FFMediaToolkit.Encoding.VideoEncoderSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Encoding.MediaOutput"/> class.
+            </summary>
+            <param name="mediaContainer">The <see cref="T:FFMediaToolkit.Encoding.Internal.OutputContainer"/> object.</param>
+            <param name="videoSettings">The video stream settings.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.MediaOutput.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:FFMediaToolkit.Encoding.MediaOutput"/> class.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.MediaOutput.Video">
+            <summary>
+            Gets the video stream in the media file.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.MediaOutput.HasVideo">
+            <summary>
+            Gets a value indicating whether the media file contains video stream.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.MediaOutput.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.Encoding.VideoEncoderSettings">
+            <summary>
+            Represents a video encoder configuration.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.VideoEncoderSettings.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Encoding.VideoEncoderSettings"/> class with default video settings values.
+            </summary>
+            <param name="width">The video frame width.</param>
+            <param name="height">The video frame height.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoEncoderSettings.Bitrate">
+            <summary>
+            Gets or sets the video stream bitrate (bytes per seconds). The default value is 30000000 B/s.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoEncoderSettings.KeyframeRate">
+            <summary>
+            Gets or sets the GoP value. The default value is 12.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoEncoderSettings.VideoWidth">
+            <summary>
+            Gets or sets the video frame width.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoEncoderSettings.VideoHeight">
+            <summary>
+            Gets or sets the video frame height.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoEncoderSettings.VideoFormat">
+            <summary>
+            Gets or sets the output video pixel format. The default value is YUV420p.
+            Added frames will be automatically converted to this format.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoEncoderSettings.Framerate">
+            <summary>
+            Gets or sets video frame rate (FPS) value. The default value is 30 frames/s.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoEncoderSettings.CodecOptions">
+            <summary>
+            Gets or sets the dictionary with custom codec options.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoEncoderSettings.Codec">
+            <summary>
+            Gets or sets the codec for this stream.
+            If <see langword="null"/>, encoder will use default video codec for current container.
+            WARNING! Many codecs are deprecated or don't work with video.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Encoding.VideoOutputStream">
+            <summary>
+            Represents a video encoder stream.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.VideoOutputStream.#ctor(FFMediaToolkit.Encoding.Internal.OutputStream{FFMediaToolkit.Common.Internal.VideoFrame},FFMediaToolkit.Encoding.VideoEncoderSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Encoding.VideoOutputStream"/> class.
+            </summary>
+            <param name="stream">The video stream.</param>
+            <param name="config">The stream setting.</param>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoOutputStream.Configuration">
+            <summary>
+            Gets the video encoding configuration used to create this stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoOutputStream.FramesCount">
+            <summary>
+            Gets the total number of video frames encoded to this stream.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Encoding.VideoOutputStream.CurrentDuration">
+            <summary>
+            Gets the current duration of this stream.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.VideoOutputStream.AddFrame(FFMediaToolkit.Graphics.ImageData)">
+            <summary>
+            Writes the specified bitmap to the video stream as the next frame.
+            </summary>
+            <param name="frame">The bitmap to write.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Encoding.VideoOutputStream.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFMediaToolkit.FFmpegException">
+            <summary>
+            Represents an exception thrown when FFMpeg method call returns an error code.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.FFmpegException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.FFmpegException"/> class.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.FFmpegException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.FFmpegException"/> class using a message and a error code.
+            </summary>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="M:FFMediaToolkit.FFmpegException.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.FFmpegException"/> class using a message and a error code.
+            </summary>
+            <param name="message">The exception message.</param>
+            <param name="errorCode">The error code returned by the FFmpeg method.</param>
+        </member>
+        <member name="P:FFMediaToolkit.FFmpegException.ErrorCode">
+            <summary>
+            Gets the error code returned by the FFmpeg method.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.FFmpegException.ErrorMessage">
+            <summary>
+            Gets the message text decoded from error code.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Graphics.ImageData">
+            <summary>
+            Represent a lightweight container for bitmap images.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Graphics.ImageData.#ctor(System.Span{System.Byte},FFMediaToolkit.Graphics.ImagePixelFormat,System.Drawing.Size)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Graphics.ImageData"/> struct using a <see cref="T:System.Span`1"/> as the data source.
+            </summary>
+            <param name="data">The bitmap data.</param>
+            <param name="pixelFormat">The pixel format.</param>
+            <param name="imageSize">The image dimensions.</param>
+            <exception cref="T:System.ArgumentException">When data span size doesn't match size calculated from width, height and the pixel format.</exception>
+        </member>
+        <member name="M:FFMediaToolkit.Graphics.ImageData.#ctor(System.Span{System.Byte},FFMediaToolkit.Graphics.ImagePixelFormat,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFMediaToolkit.Graphics.ImageData"/> struct using a <see cref="T:System.Span`1"/> as the data source.
+            </summary>
+            <param name="data">The bitmap data.</param>
+            <param name="pixelFormat">The pixel format.</param>
+            <param name="width">The image width.</param>
+            <param name="height">The image height.</param>
+            <exception cref="T:System.ArgumentException">When data span size doesn't match size calculated from width, height and the pixel format.</exception>
+        </member>
+        <member name="P:FFMediaToolkit.Graphics.ImageData.Data">
+            <summary>
+            Gets the <see cref="T:System.Span`1"/> object containing the bitmap data.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Graphics.ImageData.IsPooled">
+            <summary>
+            Gets a value indicating whether this instance of <see cref="T:FFMediaToolkit.Graphics.ImageData"/> uses memory pooling.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Graphics.ImageData.ImageSize">
+            <summary>
+            Gets the image size.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Graphics.ImageData.PixelFormat">
+            <summary>
+            Gets the bitmap pixel format.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.Graphics.ImageData.Stride">
+            <summary>
+            Gets the estimated image linesize.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Graphics.ImageData.CreatePooled(System.Drawing.Size,FFMediaToolkit.Graphics.ImagePixelFormat)">
+            <summary>
+            Rents a memory buffer from pool and creates a new instance of <see cref="T:FFMediaToolkit.Graphics.ImageData"/> class from it.
+            </summary>
+            <param name="imageSize">The image dimensions.</param>
+            <param name="pixelFormat">The bitmap pixel format.</param>
+            <returns>The new <see cref="T:FFMediaToolkit.Graphics.ImageData"/> instance.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Graphics.ImageData.FromArray(System.Byte[],FFMediaToolkit.Graphics.ImagePixelFormat,System.Drawing.Size)">
+            <summary>
+            Creates a new instance of the <see cref="T:FFMediaToolkit.Graphics.ImageData"/> class using a byte array as the data source.
+            </summary>
+            <param name="pixels">The byte array containing bitmap data.</param>
+            <param name="pixelFormat">The bitmap pixel format.</param>
+            <param name="imageSize">The image dimensions.</param>
+            <returns>A new <see cref="T:FFMediaToolkit.Graphics.ImageData"/> instance.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Graphics.ImageData.FromArray(System.Byte[],FFMediaToolkit.Graphics.ImagePixelFormat,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of the <see cref="T:FFMediaToolkit.Graphics.ImageData"/> class using a byte array as the data source.
+            </summary>
+            <param name="pixels">The byte array containing bitmap data.</param>
+            <param name="pixelFormat">The bitmap pixel format.</param>
+            <param name="width">The image width.</param>
+            <param name="height">The image height.</param>
+            <returns>A new <see cref="T:FFMediaToolkit.Graphics.ImageData"/> instance.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Graphics.ImageData.FromPointer(System.IntPtr,FFMediaToolkit.Graphics.ImagePixelFormat,System.Drawing.Size)">
+            <summary>
+            Creates a new instance of the <see cref="T:FFMediaToolkit.Graphics.ImageData"/> class using a pointer to the unmanaged memory as the data source.
+            </summary>
+            <param name="pointer">The byte array containing bitmap data.</param>
+            <param name="pixelFormat">The bitmap pixel format.</param>
+            <param name="imageSize">The image dimensions.</param>
+            <returns>A new <see cref="T:FFMediaToolkit.Graphics.ImageData"/> instance.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Graphics.ImageData.FromPointer(System.IntPtr,FFMediaToolkit.Graphics.ImagePixelFormat,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of the <see cref="T:FFMediaToolkit.Graphics.ImageData"/> class using a pointer to the unmanaged memory as the data source.
+            </summary>
+            <param name="pointer">The byte array containing bitmap data.</param>
+            <param name="pixelFormat">The bitmap pixel format.</param>
+            <param name="width">The image width.</param>
+            <param name="height">The image height.</param>
+            <returns>A new <see cref="T:FFMediaToolkit.Graphics.ImageData"/> instance.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Graphics.ImageData.EstimateStride(System.Int32,FFMediaToolkit.Graphics.ImagePixelFormat)">
+            <summary>
+            Gets the estimated image line size based on the pixel format and width.
+            </summary>
+            <param name="width">The image width.</param>
+            <param name="format">The image pixel format.</param>
+            <returns>The size of a single line of the image measured in bytes.</returns>
+        </member>
+        <member name="T:FFMediaToolkit.Graphics.ImagePixelFormat">
+            <summary>
+            Represents the most used image pixel formats. Partially compatible with <see cref="T:FFmpeg.AutoGen.AVPixelFormat"/>.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Graphics.ImagePixelFormat.Bgr24">
+            <summary>
+            Represents a BGR 24bpp bitmap pixel format. Used by default in GDI+ and WPF graphics.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Graphics.ImagePixelFormat.Bgra32">
+            <summary>
+            Represents a BGRA(with alpha channel) 32bpp bitmap pixel format.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Graphics.ImagePixelFormat.Rgb24">
+            <summary>
+            Represents a RGB 24bpp bitmap pixel format.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Graphics.ImagePixelFormat.Argb32">
+            <summary>
+            Represents a ARGB(with alpha channel) 32bpp bitmap pixel format.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Graphics.VideoPixelFormat">
+            <summary>
+            Represents the most used video YUV pixel formats. Partially compatible with <see cref="T:FFmpeg.AutoGen.AVPixelFormat"/>.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Graphics.VideoPixelFormat.Yuv444">
+            <summary>
+            Represents a YUV 24bpp 4:4:4 video pixel format.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Graphics.VideoPixelFormat.Yuv422">
+            <summary>
+            Represents a YUV 16bpp 4:2:2 video pixel format.
+            </summary>
+        </member>
+        <member name="F:FFMediaToolkit.Graphics.VideoPixelFormat.Yuv420">
+            <summary>
+            Represents a YUV 12bpp 4:2:0 video pixel format.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Helpers.ExceptionHandler">
+            <summary>
+            Contains common methods for handling FFMpeg exceptions.
+            </summary>
+        </member>
+        <member name="T:FFMediaToolkit.Helpers.ExceptionHandler.ErrorHandler">
+            <summary>
+            A delegate for error code handling.
+            </summary>
+            <param name="errorCode">The error code.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.ExceptionHandler.ThrowIfError(System.Int32,System.String)">
+            <summary>
+            Checks if specified integer is error code and throws an <see cref="T:FFMediaToolkit.FFmpegException"/>.
+            </summary>
+            <param name="errorCode">The exit code returned by a method.</param>
+            <param name="exceptionMessage">The exception message.</param>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.ExceptionHandler.IfError(System.Int32,System.Int32,FFMediaToolkit.Helpers.ExceptionHandler.ErrorHandler,System.Boolean)">
+            <summary>
+            Checks if the integer is equal to the specified and excecutes the <see cref="T:FFMediaToolkit.Helpers.ExceptionHandler.ErrorHandler"/> method.
+            </summary>
+            <param name="errorCode">The exit code returned by a method.</param>
+            <param name="handledError">The error code to handle.</param>
+            <param name="action">The method to execute if error handled.</param>
+            <param name="handles">If <see langword="true"/> this method after handling exception will return 0 instead of the original code.</param>
+            <returns>Original error code or 0 if error handled and the <paramref name="handles"/> is <see langword="true"/>.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.ExceptionHandler.IfError(System.Int32,System.Int32,System.String)">
+            <summary>
+            Checks if the integer is equal to the <paramref name="handledError"/> and throws an <see cref="T:FFMediaToolkit.FFmpegException"/>.
+            </summary>
+            <param name="errorCode">The exit code returned by a method.</param>
+            <param name="handledError">The error code to handle.</param>
+            <param name="exceptionMessage">The exception message.</param>
+            <returns>The original error code.</returns>
+        </member>
+        <member name="T:FFMediaToolkit.Helpers.Extensions">
+            <summary>
+            Contains extension methods.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.Extensions.GetMediaType(FFmpeg.AutoGen.AVFrame)">
+            <summary>
+            Gets the type of content in the <see cref="T:FFmpeg.AutoGen.AVFrame"/>.
+            </summary>
+            <param name="frame">The <see cref="T:FFmpeg.AutoGen.AVFrame"/>.</param>
+            <returns>The type of frame content.</returns>
+        </member>
+        <member name="T:FFMediaToolkit.Helpers.MathHelper">
+            <summary>
+            Contains extension methods for math types.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.MathHelper.ToDouble(FFmpeg.AutoGen.AVRational)">
+            <summary>
+            Converts a rational number to a double.
+            </summary>
+            <param name="rational">The <see cref="T:FFmpeg.AutoGen.AVRational"/> to convert.</param>
+            <returns>The <see cref="T:System.Double"/> value.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.MathHelper.ToTimeSpan(System.Int64,FFmpeg.AutoGen.AVRational)">
+            <summary>
+            Converts the given <paramref name="timestamp"/> in the <paramref name="timeBase"/> units to a <see cref="T:System.TimeSpan"/> object.
+            </summary>
+            <param name="timestamp">The timestamp.</param>
+            <param name="timeBase">The time base unit.</param>
+            <returns>The converted <see cref="T:System.TimeSpan"/>.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.MathHelper.ToTimeSpan(System.Int32,System.Double)">
+            <summary>
+            Converts the frame number to a <see cref="T:System.TimeSpan"/>.
+            </summary>
+            <param name="frameNumber">The frame number.</param>
+            <param name="fps">The stream frame rate.</param>
+            <returns>The converted <see cref="T:System.TimeSpan"/>.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.MathHelper.ToFrameNumber(System.TimeSpan,FFmpeg.AutoGen.AVRational)">
+            <summary>
+            Converts this <see cref="T:System.TimeSpan"/> to a frame number based on the specified frame rate/>.
+            </summary>
+            <param name="time">The time.</param>
+            <param name="framerate">The stream frame rate.</param>
+            <returns>The frame number.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.MathHelper.ToTimestamp(System.Int32,FFmpeg.AutoGen.AVRational,FFmpeg.AutoGen.AVRational)">
+            <summary>
+            Converts a frame index to a timestamp in the <paramref name="timeBase"/> units.
+            </summary>
+            <param name="frameNumber">The frame number.</param>
+            <param name="fps">The stream frame rate.</param>
+            <param name="timeBase">The stream time base.</param>
+            <returns>The timestamp.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.MathHelper.ToTimestamp(System.TimeSpan,FFmpeg.AutoGen.AVRational)">
+            <summary>
+            Converts the <see cref="T:System.TimeSpan"/> to a timestamp in the <paramref name="timeBase"/> units.
+            </summary>
+            <param name="time">The time.</param>
+            <param name="timeBase">The stream time base.</param>
+            <returns>The timestamp.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.MathHelper.Clamp(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Clamps the specified number between min and max values.
+            </summary>
+            <param name="number">The value to clamp.</param>
+            <param name="min">The miniumum value.</param>
+            <param name="max">The maximumum value.</param>
+            <returns>The clamped value.</returns>
+        </member>
+        <member name="T:FFMediaToolkit.Helpers.StringConverter">
+            <summary>
+            Contains string conversion methods.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.StringConverter.Utf8ToString(System.IntPtr)">
+            <summary>
+            Creates a new <see cref="T:System.String"/> from a pointer to the unmanaged UTF-8 string.
+            </summary>
+            <param name="pointer">A pointer to the umanaged string.</param>
+            <returns>The converted string.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Helpers.StringConverter.DecodeMessage(System.Int32)">
+            <summary>
+            Gets the FFmpeg error message based on the error code.
+            </summary>
+            <param name="errorCode">The error code.</param>
+            <returns>The decoded error message.</returns>
+        </member>
+        <member name="T:FFMediaToolkit.Interop.NativeMethods">
+            <summary>
+            Contains the native operating system methods.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.Interop.NativeMethods.GetDefaultDirectory">
+            <summary>
+            Gets the default FFmpeg directory for current platform.
+            </summary>
+            <returns>A path to the default directory for FFmpeg libraries.</returns>
+        </member>
+        <member name="M:FFMediaToolkit.Interop.NativeMethods.SetDllLoadingDirectory(System.String)">
+            <summary>
+            Sets DLL loading directory if current OS is Windows.
+            </summary>
+            <param name="dir">The directory path.</param>
+        </member>
+        <member name="T:FFMediaToolkit.MediaToolkit">
+            <summary>
+            Contains methods for managing FFmpeg libraries.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.MediaToolkit.FFmpegPath">
+            <summary>
+            Gets or sets path to the directory containing FFmpeg binaries.
+            </summary>
+        </member>
+        <member name="P:FFMediaToolkit.MediaToolkit.IsPathSetByUser">
+            <summary>
+            Gets a value indicating whether a path to the FFmpeg binaries was set by user.
+            </summary>
+        </member>
+        <member name="M:FFMediaToolkit.MediaToolkit.LoadFFmpeg">
+            <summary>
+            Loads FFmpeg libraries from the default path for current platform.
+            </summary>
+        </member>
+    </members>
+</doc>

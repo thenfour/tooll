@@ -72,7 +72,12 @@ namespace Framefield.Core
             return context;
         }
 
-        public OperatorPartContext(float globalTime = 0.0f, IPlaySpeedProvider playSpeedProvider = null)
+        // This overload exists to retain backwards compatibility with certain operators.
+        public OperatorPartContext(float globalTime = 0.0f) : this(globalTime, null)
+        {
+        }
+
+        public OperatorPartContext(float globalTime, IPlaySpeedProvider playSpeedProvider)
         {
             D3DDevice = Core.D3DDevice.Device;
             GlobalTime = globalTime;

@@ -24,7 +24,7 @@ namespace Framefield.Tooll
             var bpmOffsetString = App.Current.ProjectSettings.GetOrSetDefault("Soundtrack.BPMOffset", "0.0");
             BPMTimeOffset = Double.Parse(String.Format("{0}", bpmOffsetString));
 
-            //SetupTimeRulerDefinition();
+            SetupTimeRulerDefinition();
 
             m_DrawingVisual = new DrawingVisual();
             m_Children.Add(m_DrawingVisual);

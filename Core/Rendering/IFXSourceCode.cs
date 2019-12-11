@@ -2,6 +2,7 @@
 // Released under the MIT license. (see LICENSE.txt)
 
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 
 namespace Framefield.Core.Rendering
 {
@@ -12,6 +13,7 @@ namespace Framefield.Core.Rendering
         void SetCode(int idx, string code);
         int NumCodes();
         CompilerErrorCollection Compile(int codeIdx);
+        Dictionary<string, string> GetCustomCodeSectionMapping(int codeIdx);
     }
 
     public interface IFXImageSourceCode

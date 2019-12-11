@@ -34,6 +34,8 @@ namespace Framefield.Tooll
             }
         }
 
+        //public Core.Rendering.IFXSourceCode fxsc { get; private set; }
+
         public int CodeIndex { get; set; }
 
         public int GetCodeSectionStartLine(string sectionId) {
@@ -46,7 +48,8 @@ namespace Framefield.Tooll
 
         public ObservableCollection<CodeSectionViewModel> CodeSections { get; set; }    // TabControl binds to this
 
-        public CodeSectionManager() {
+        public CodeSectionManager(/*Core.Rendering.IFXSourceCode fxsc*/) {
+            //this.fxsc = fxsc;
             CodeSections = new ObservableCollection<CodeSectionViewModel>();
         }
 
