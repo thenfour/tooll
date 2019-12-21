@@ -28,8 +28,9 @@ namespace Framefield.Core
         public float GlobalTime { get; private set; }
         public IPlaySpeedProvider PlaySpeedProvider { get; private set; }
         public Dictionary<string, float> Variables { get { return _variables; } }
-        public Dictionary<string, object> Objects { get { return _objects; } }
-        public float Value { get; set; }
+    public Dictionary<string, object> Objects { get { return _objects; } }
+    public Dictionary<string, object> GlobalObjects { get { return __globalObjects; } }
+    public float Value { get; set; }
         public string Text { get; set; }
         public Mesh Mesh { get; set; }
         public Texture2D Image { get; set; }
@@ -160,6 +161,8 @@ namespace Framefield.Core
 
         public static DefaultRenderer DefaultRenderer { get { return _defaultRenderer; } }
         private static readonly DefaultRenderer _defaultRenderer = new DefaultRenderer();
-    }
+
+      private static readonly Dictionary<string, object> __globalObjects = new Dictionary<string, object>();
+  }
 
 }

@@ -261,9 +261,9 @@ namespace Framefield.Player
             e.Handled = true;
         }
 
-        private OperatorPartContext GetNewContext(float t = 0.0f)
+        private OperatorPartContext GetNewContext()
         {
-            var context = new OperatorPartContext(_defaultContext, t, this);
+            var context = new OperatorPartContext(_defaultContext, (float)_globalTime.Elapsed.TotalSeconds, this);
             context.D3DDevice = D3DDevice.Device;
             context.Effect = _renderer.SceneDefaultEffect;
             context.InputLayout = _renderer.SceneDefaultInputLayout;
@@ -294,7 +294,7 @@ namespace Framefield.Player
             var invalidator = new OperatorPart.InvalidateInvalidatables();
             op.Outputs[0].TraverseWithFunctionUseSpecificBehavior(null, invalidator);
 
-            var context = GetNewContext(t);
+            var context = GetNewContext();
 
             op.Outputs[0].Eval(context);
         }

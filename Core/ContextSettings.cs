@@ -21,7 +21,7 @@ namespace Framefield.Core
             Sampling = 2;
             AspectRatio = 0;
             FullScreen = true;
-            Looped = false;
+            Looped = true;
             VSyncEnabled = true;
             PreCacheEnabled = true;
         }

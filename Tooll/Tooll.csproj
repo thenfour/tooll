@@ -1000,10 +1000,6 @@
     <Resource Include="Images\cursors\CursorSlideNormal.cur" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LibToollTenfour\LibToollTenfour\LibToollTenfour.csproj">
-      <Project>{446c4eaa-f429-49c2-a40d-f14eeca2c243}</Project>
-      <Name>LibToollTenfour</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{AF7349E3-1047-4995-85FB-895BD9B9FF2B}</Project>
       <Name>Core</Name>
