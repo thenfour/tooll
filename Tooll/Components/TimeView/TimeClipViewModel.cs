@@ -10,63 +10,81 @@ using System.Text;
 using Framefield.Core;
 using Framefield.Core.OperatorPartTraits;
 using System.Windows.Data;
+using SharpDX;
 
 namespace Framefield.Tooll
 {
-    // We derive from DependencyObject to link to Operator widget select state
-    public class TimeClipViewModel : DependencyObject, INotifyPropertyChanged
+  // We derive from DependencyObject to link to Operator widget select state
+  public class TimeClipViewModel : DependencyObject, INotifyPropertyChanged
+  {
+    public TimeClipViewModel(OperatorWidget op)
     {
-        public TimeClipViewModel(OperatorWidget op)
-        {
-            OperatorWidget = op;
-            m_TimeClip = op.Operator.InternalParts[0].Func as ITimeClip;
+      OperatorWidget = op;
+      m_TimeClip = op.Operator.InternalParts[0].Func as ITimeClip;
 
-            op.Operator.InternalParts[0].ChangedEvent += ForwardChangedNotification;
+      op.Operator.InternalParts[0].ChangedEvent += ForwardChangedNotification;
 
-            BindingOperations.SetBinding(op, OperatorWidget.IsSelectedProperty, new Binding("IsSelected") { Source = this, Mode = BindingMode.TwoWay });
-        }
+      BindingOperations.SetBinding(op, OperatorWidget.IsSelectedProperty, new Binding("IsSelected") { Source = this, Mode = BindingMode.TwoWay });
+    }
 
-        ~TimeClipViewModel()
-        {
-            OperatorWidget.Operator.InternalParts[0].ChangedEvent -= ForwardChangedNotification;
-        }
+    ~TimeClipViewModel()
+    {
+      OperatorWidget.Operator.InternalParts[0].ChangedEvent -= ForwardChangedNotification;
+    }
 
-        public static readonly DependencyProperty IsSelectedProperty = DependencyProperty.Register("IsSelected", typeof(bool), typeof(TimeClipViewModel),
-                                                                                                   new UIPropertyMetadata() { DefaultValue=false });
+    public static readonly DependencyProperty IsSelectedProperty = DependencyProperty.Register("IsSelected", typeof(bool), typeof(TimeClipViewModel),
+                                                                                               new UIPropertyMetadata() { DefaultValue = false });
 
-        public OperatorWidget OperatorWidget { get; private set; }
-        public double StartTime
-        {
-            get { return m_TimeClip.StartTime; }
-            set { m_TimeClip.StartTime = value; }
-        }
-        public double EndTime
-        {
-            get { return m_TimeClip.EndTime; }
-            set { m_TimeClip.EndTime = value; }
-        }
-        public double SourceStartTime
-        {
-            get { return m_TimeClip.SourceStartTime; }
-            set { m_TimeClip.SourceStartTime = value; }
-        }
-        public double SourceEndTime
-        {
-            get { return m_TimeClip.SourceEndTime; }
-            set { m_TimeClip.SourceEndTime = value; }
-        }
-        public int Layer
-        {
-            get { return m_TimeClip.Layer; }
-            set { m_TimeClip.Layer = value; }
-        }
-        public double Duration
-        {
-            get { return EndTime - StartTime; }
-            set { EndTime += value; }
-        }
+    public OperatorWidget OperatorWidget { get; private set; }
+    public double StartTime
+    {
+      get { return m_TimeClip.StartTime; }
+      set { m_TimeClip.StartTime = value; }
+    }
+    public double EndTime
+    {
+      get { return m_TimeClip.EndTime; }
+      set { m_TimeClip.EndTime = value; }
+    }
+    public double SourceStartTime
+    {
+      get { return m_TimeClip.SourceStartTime; }
+      set { m_TimeClip.SourceStartTime = value; }
+    }
+    public double SourceEndTime
+    {
+      get { return m_TimeClip.SourceEndTime; }
+      set { m_TimeClip.SourceEndTime = value; }
+    }
+    public int Layer
+    {
+      get { return m_TimeClip.Layer; }
+      set { m_TimeClip.Layer = value; }
+    }
+    public double Duration
+    {
+      get { return EndTime - StartTime; }
+      set { EndTime += value; }
+    }
+    public Color4 BackgroundColor { get { return ColorProvider.BackgroundColor; } set { ColorProvider.BackgroundColor = value; NotifyPropertyChanged("BackgroundColor"); NotifyPropertyChanged("IsSelected"); } }
+    public Color4 ForegroundColor { get { return ColorProvider.ForegroundColor; } set { ColorProvider.ForegroundColor = value; NotifyPropertyChanged("ForegroundColor"); NotifyPropertyChanged("IsSelected"); } }
 
-        #region event forwarder
+    DefaultTimeClipColor _defaultColorProvider = new DefaultTimeClipColor();
+
+    public ITimeClipColor ColorProvider
+    {
+      get
+      {
+        ITimeClipColor r = m_TimeClip as ITimeClipColor;
+        if (r == null)
+        {
+          r = _defaultColorProvider;
+        }
+        return r;
+      }
+    }
+
+    #region event forwarder
         private void ForwardChangedNotification(object sender, OperatorPart.ChangedEventArgs e)
         {
             NotifyPropertyChanged("StartTime");
@@ -74,12 +92,15 @@ namespace Framefield.Tooll
             NotifyPropertyChanged("SourceStartTime");
             NotifyPropertyChanged("SourceEndTime");
             NotifyPropertyChanged("Layer");
-            NotifyPropertyChanged("Duration");
-        }
-        #endregion
+      NotifyPropertyChanged("Duration");
 
-        #region notifier
-        public event PropertyChangedEventHandler PropertyChanged;
+      NotifyPropertyChanged("BackgroundColor");
+      NotifyPropertyChanged("ForegroundColor");
+    }
+    #endregion
+
+    #region notifier
+    public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged(string propName)
         {

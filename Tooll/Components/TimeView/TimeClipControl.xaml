@@ -13,6 +13,7 @@
         <local:TimeScaleOffsetToXConverter x:Key="timeToXConverter"/>
         <local:DurationTimescaleToWidthConverter x:Key="durationToWidthConverter"/>
         <local:LayerToYConverter x:Key="layerToYConverter"/>
+        <local:ColorToBrushConverter x:Key="colorToBrushConverter"/>
 
         <ControlTemplate x:Key="DefaultTemplate">
             <Grid>
@@ -24,8 +25,9 @@
                             <ColumnDefinition Width="6"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock  Text="{Binding ElementName=XTimeClipControl, Path=ClipName}"
-                                    Grid.ColumnSpan="3"  
-                                    Background="#9800FFFF" TextAlignment="Center"  />
+                                    Grid.ColumnSpan="3" 
+                                    Foreground="{Binding Path=ForegroundColor, Converter={StaticResource colorToBrushConverter}}"
+                                    Background="{Binding Path=BackgroundColor, Converter={StaticResource colorToBrushConverter}}" TextAlignment="Center"  />
                         <Thumb Grid.Column="0" DragDelta="XStartThumb_DragDelta" DragStarted="XTimeClip_Thumb_DragStarted"  Cursor="SizeWE">
                             <Thumb.Template>
                                 <ControlTemplate>
@@ -60,8 +62,8 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock  Text="{Binding ElementName=XTimeClipControl, Path=ClipName}"
                                     Grid.ColumnSpan="3"  
-                                    Foreground="White"
-                                    Background="#9800FFFF" TextAlignment="Center"  />
+                                    Foreground="{Binding Path=ForegroundColor, Converter={StaticResource colorToBrushConverter}}"
+                                    Background="{Binding Path=BackgroundColor, Converter={StaticResource colorToBrushConverter}}" TextAlignment="Center"  />
                         <Thumb Grid.Column="0" DragDelta="XStartThumb_DragDelta" DragStarted="XTimeClip_Thumb_DragStarted" Cursor="SizeWE">
                             <Thumb.Template>
                                 <ControlTemplate>
