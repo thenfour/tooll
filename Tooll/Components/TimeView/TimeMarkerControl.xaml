@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Framefield.Tooll"
              mc:Ignorable="d" 
-             Height="15"
-             Width="5"
+             Height="50"
+             Width="7"
              x:Name="XTimeMarkerControl" Unloaded="OnUnloaded" Loaded="OnLoaded" 
              >
     
@@ -32,18 +32,18 @@
     <!-- Actual component -->
     <Canvas Background="Transparent">
 
-        <Label Canvas.Top="8" Padding="6 0 0 0" Content="{Binding Path=Name}" Foreground="{Binding Path=Color, Converter={StaticResource colorToBrushConverter}}" IsHitTestVisible="False" Height="30" Width="300" FontSize="10">
+        <Label Canvas.Top="0" Padding="0 0 0 0" Content="{Binding Path=Name}" Foreground="{Binding Path=Color, Converter={StaticResource colorToBrushConverter}}" IsHitTestVisible="False" Height="30" Width="300" FontSize="10">
 
         </Label>
         <!-- time widget -->
         <Thumb x:Name="XTimeClip_Thumb"
-               Canvas.Top="10"
+               Canvas.Top="0"
                DragDelta="XTimeClip_DragDelta"
                DragStarted="XTimeClip_Thumb_DragStarted"
                DragCompleted="XTimeClip_Thumb_DragCompleted">
             <Thumb.Template>
                 <ControlTemplate>
-                    <Border BorderThickness="1" Width="5" Height="15" >
+                    <Border BorderThickness="1" Width="7" Height="40" >
                         <Border.Style>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="BorderBrush" Value="Transparent" />
@@ -55,6 +55,7 @@
                             </Style>
                         </Border.Style>
                         <Rectangle  Fill="{Binding Path=Color, Converter={StaticResource colorToBrushConverter}}"/>
+                      
                     </Border>
                 </ControlTemplate>
             </Thumb.Template>
