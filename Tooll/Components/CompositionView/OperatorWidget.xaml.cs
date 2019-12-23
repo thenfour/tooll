@@ -825,9 +825,41 @@ namespace Framefield.Tooll
             XOperatorLabel.Foreground.Freeze();
         }
 
-        private void UpdateStyleAndIndicators()
+    private void SetTimeClipColor()
+    {
+      bool v = false;
+      Color c = Color.FromArgb(1,1,0,1);
+      if (Operator.InternalParts.Count > 0)
+      {
+        var tc = Operator.InternalParts[0].Func as Core.OperatorPartTraits.ITimeClip;
+        if (tc != null)
+        {
+          v = true;
+          var tcc = Operator.InternalParts[0].Func as Core.OperatorPartTraits.ITimeClipColor;
+          if (tcc != null)
+          {
+            c = Color.FromArgb((byte)(tcc.BackgroundColor.Alpha * 255), (byte)(tcc.BackgroundColor.Red * 255), (byte)(tcc.BackgroundColor.Green * 255), (byte)(tcc.BackgroundColor.Blue * 255));
+          }
+        }
+        var tm = Operator.InternalParts[0].Func as Core.OperatorPartTraits.ITimeMarker;
+        if (tm != null)
+        {
+          v = true;
+          c = Color.FromArgb((byte)(tm.Color.Alpha * 255), (byte)(tm.Color.Red * 255), (byte)(tm.Color.Green * 255), (byte)(tm.Color.Blue * 255));
+        }
+      }
+      XTimeMarkerIndicator.Visibility = v ? Visibility.Visible : Visibility.Hidden;
+      if (v)
+      {
+        XTimeMarkerIndicator.Background = new SolidColorBrush(c);
+      }
+    }
+
+    private void UpdateStyleAndIndicators()
         {
             XAnimationIndicator.Visibility = IsAnimated ? Visibility.Visible : Visibility.Hidden;
+
+            SetTimeClipColor();
 
             if (!Operator.Definition.Namespace.StartsWith("lib."))
             {

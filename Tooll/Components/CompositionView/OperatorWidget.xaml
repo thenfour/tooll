@@ -43,11 +43,11 @@
                 <Trigger Property="IsSelected" Value="false">
                     <Setter   Property="BorderBrush" Value="Black"/>
                 </Trigger>
-                <Trigger Property="IsDisabled" Value="true">
+                <!--<Trigger Property="IsDisabled" Value="true">
                     <Setter Property="Opacity" Value="0.5"/>
                     <Setter Property="Background" Value="{StaticResource PatternGradient}"/>
                     <Setter Property="BorderThickness" Value="0,4,0,0"/>
-                </Trigger>
+                </Trigger>-->
             </Style.Triggers>
         </Style>
     </UserControl.Style>
@@ -118,7 +118,8 @@
                    Opacity="0"
                    Cursor="SizeWE"/>
             </Border>-->
-            <Border Grid.Column="2" Name="XAnimationIndicator" Background="#ffd47d29" Visibility="Hidden" IsHitTestVisible="False"/>
-        </Grid>
+      <Border Grid.Column="2" Name="XAnimationIndicator" Background="#ffd47d29" Visibility="Hidden" IsHitTestVisible="False"/>
+      <Border Grid.Column="2" Name="XTimeMarkerIndicator" Background="#FFD42967" IsHitTestVisible="False"/>
+    </Grid>
     </Grid>
 </UserControl>
