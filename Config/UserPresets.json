@@ -1,4 +1,23 @@
 {
+  "0ebfbe6c-58d0-4a37-818d-c9906debaa47": [
+    {
+      "ValuesByParameterID": {
+        "25a67fca-a22f-40ae-aed1-35bc114e8852": 0.0,
+        "6875d14a-1206-4953-8777-738722f6b7b6": 4.0,
+        "8f9c5e46-abee-4806-b3c1-1e403907051a": 1.0,
+        "be905273-8b9d-40d4-8cbd-4fccd69ce161": 0.05,
+        "dcfda975-92db-4ccb-a0cb-6a8e95aa0124": 4.0,
+        "e0ee185b-eca5-40bd-b9b7-3493f0a032ac": 0.0,
+        "faca41a8-e801-4875-b941-4ba0c154ceca": 1.0,
+        "ffc05174-6177-4de2-9af5-ce2a61ed748e": 0.0
+      },
+      "OperatorInstanceID": "bf6f41cc-a468-4b45-8980-9494e041eaf4",
+      "MetaOperatorID": "0ebfbe6c-58d0-4a37-818d-c9906debaa47",
+      "IsInstancePreset": true,
+      "Name": null,
+      "Id": "7b3c3551-bf67-4d9a-84fa-a0b0000641e8"
+    }
+  ],
   "11c1845a-84b5-45e4-91d2-e880ae5d934a": [
     {
       "ValuesByParameterID": {
@@ -850,6 +869,36 @@
       "IsInstancePreset": true,
       "Name": null,
       "Id": "4eef2df6-f4f4-4004-84e8-2170c19937e2"
+    }
+  ],
+  "da549627-ccc4-418a-be00-7f37fa403a19": [
+    {
+      "ValuesByParameterID": {
+        "0983486c-9f21-4c4e-9c17-346edcd2b100": 0.0,
+        "2b24d4f8-52e3-4a59-98f0-9eda79c968f3": -1.0,
+        "2d11226c-e75a-41b2-849f-a708887e4a69": 0.0,
+        "370db8d0-a990-4bcf-9c7e-17448dc92f0e": 1.0,
+        "43d34257-f668-4ec1-a6b3-4f385bbf38d5": 0.8,
+        "59205751-1ce6-40d1-81a8-1246a2a9faa4": -1.0,
+        "70eb81b2-8d0a-4927-9cb4-d145fa521bea": 0.0,
+        "7eb1424e-3de4-4aae-8be6-ed081b65db7a": 0.0,
+        "8d6840a7-92cb-4608-8037-d29c8383c77c": 1.2,
+        "8eae8f51-0e65-44e9-88c6-4c8b348284dc": 400.0,
+        "95562964-69e4-4196-8991-b6d5dd7f03d5": 1.0,
+        "9bdf305b-3869-4965-8c66-7d0def194089": 0.0,
+        "9d8715e2-f481-4831-8074-9bec173e8c8e": 20.0,
+        "a7aa49ee-6f6b-4ff6-bbbe-570fb151eaf3": 1.0,
+        "b4eaff32-66ce-44ae-a20e-d821a8eb9c5f": 0.0,
+        "c7be02d5-0b03-401c-842e-a8da79085f56": -1.0,
+        "c9c3eab8-b25a-4a0a-a345-ad3563c0ddb9": 0.8,
+        "e27e12a4-03a2-4733-ab1a-2e26fd35ca40": 0.8,
+        "e9b3e871-33c9-4bda-946f-8312bade5bd2": 0.0
+      },
+      "OperatorInstanceID": "620d46df-9372-4545-8a9f-1900c407ea0d",
+      "MetaOperatorID": "da549627-ccc4-418a-be00-7f37fa403a19",
+      "IsInstancePreset": true,
+      "Name": null,
+      "Id": "41bc9ca7-2a0e-436a-8cb2-47062b170a83"
     }
   ],
   "daeb7eb9-c13c-4947-a0c0-60f981e7168f": [

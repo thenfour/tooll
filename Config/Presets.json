@@ -1312,6 +1312,44 @@
       "Id": "1db5a6b9-f8fc-44da-b93c-d208eac3eacd"
     }
   ],
+  "0ebfbe6c-58d0-4a37-818d-c9906debaa47": [
+    {
+      "ValuesByParameterID": {
+        "be905273-8b9d-40d4-8cbd-4fccd69ce161": -0.09,
+        "dcfda975-92db-4ccb-a0cb-6a8e95aa0124": -0.7709999,
+        "faca41a8-e801-4875-b941-4ba0c154ceca": 4.57
+      },
+      "OperatorInstanceID": "00000000-0000-0000-0000-000000000000",
+      "MetaOperatorID": "0ebfbe6c-58d0-4a37-818d-c9906debaa47",
+      "IsInstancePreset": false,
+      "Name": null,
+      "Id": "69480d5c-03bb-4630-b29e-470f44aebb86"
+    },
+    {
+      "ValuesByParameterID": {
+        "be905273-8b9d-40d4-8cbd-4fccd69ce161": 0.05,
+        "dcfda975-92db-4ccb-a0cb-6a8e95aa0124": 0.37,
+        "faca41a8-e801-4875-b941-4ba0c154ceca": 1.0
+      },
+      "OperatorInstanceID": "00000000-0000-0000-0000-000000000000",
+      "MetaOperatorID": "0ebfbe6c-58d0-4a37-818d-c9906debaa47",
+      "IsInstancePreset": false,
+      "Name": null,
+      "Id": "2fffdee4-e724-4a48-9eeb-0af4eb492a12"
+    },
+    {
+      "ValuesByParameterID": {
+        "be905273-8b9d-40d4-8cbd-4fccd69ce161": 0.05,
+        "dcfda975-92db-4ccb-a0cb-6a8e95aa0124": 1.91,
+        "faca41a8-e801-4875-b941-4ba0c154ceca": 1.0
+      },
+      "OperatorInstanceID": "00000000-0000-0000-0000-000000000000",
+      "MetaOperatorID": "0ebfbe6c-58d0-4a37-818d-c9906debaa47",
+      "IsInstancePreset": false,
+      "Name": null,
+      "Id": "b890f4ec-a89f-42d2-a20a-995e9c26276a"
+    }
+  ],
   "0eec0983-c6a5-41c7-a83a-4e0944d8f2f1": [
     {
       "ValuesByParameterID": {
@@ -22484,6 +22522,61 @@
       "IsInstancePreset": false,
       "Name": null,
       "Id": "13fc63b9-6320-4264-9c41-50492a41b2aa"
+    }
+  ],
+  "fd9d7b1a-86ba-4184-9dd1-a467a27ee3da": [
+    {
+      "ValuesByParameterID": {
+        "198c1d5b-688f-4bb4-b047-de9d3655a97d": 0.0,
+        "3d677263-8723-4644-a23d-b309ce2141da": 1.0,
+        "54ed2051-56be-4f15-9948-ea22772aed97": 1.0,
+        "5726b8e3-610e-4edd-ba25-d0878b1cb891": 0.05,
+        "7bf09cbd-c07f-4ec3-b058-45b9633f3db5": 0.0,
+        "8496a009-6821-48e8-ac5f-d2a1b9cd098b": 4.0,
+        "cf2cba31-4d49-49c7-b642-56f9daea2af7": 0.0,
+        "ec9be85c-5d1c-46df-bb29-a49066578d09": 4.0
+      },
+      "OperatorInstanceID": "00000000-0000-0000-0000-000000000000",
+      "MetaOperatorID": "fd9d7b1a-86ba-4184-9dd1-a467a27ee3da",
+      "IsInstancePreset": false,
+      "Name": null,
+      "Id": "7dbfcb57-efe6-4717-8af2-00e313e471ec"
+    },
+    {
+      "ValuesByParameterID": {
+        "54ed2051-56be-4f15-9948-ea22772aed97": 4.57,
+        "5726b8e3-610e-4edd-ba25-d0878b1cb891": -0.09,
+        "ec9be85c-5d1c-46df-bb29-a49066578d09": -0.7709999
+      },
+      "OperatorInstanceID": "00000000-0000-0000-0000-000000000000",
+      "MetaOperatorID": "fd9d7b1a-86ba-4184-9dd1-a467a27ee3da",
+      "IsInstancePreset": false,
+      "Name": null,
+      "Id": "1bcd9d09-7650-49c4-919d-1f04cec12cb6"
+    },
+    {
+      "ValuesByParameterID": {
+        "54ed2051-56be-4f15-9948-ea22772aed97": 1.0,
+        "5726b8e3-610e-4edd-ba25-d0878b1cb891": 0.05,
+        "ec9be85c-5d1c-46df-bb29-a49066578d09": 0.37
+      },
+      "OperatorInstanceID": "00000000-0000-0000-0000-000000000000",
+      "MetaOperatorID": "fd9d7b1a-86ba-4184-9dd1-a467a27ee3da",
+      "IsInstancePreset": false,
+      "Name": null,
+      "Id": "c27074c7-390b-4b26-8617-53617583be2a"
+    },
+    {
+      "ValuesByParameterID": {
+        "54ed2051-56be-4f15-9948-ea22772aed97": 1.0,
+        "5726b8e3-610e-4edd-ba25-d0878b1cb891": 0.05,
+        "ec9be85c-5d1c-46df-bb29-a49066578d09": 1.91
+      },
+      "OperatorInstanceID": "00000000-0000-0000-0000-000000000000",
+      "MetaOperatorID": "fd9d7b1a-86ba-4184-9dd1-a467a27ee3da",
+      "IsInstancePreset": false,
+      "Name": null,
+      "Id": "5525ccc6-c043-4b64-aec5-afb09bf137c5"
     }
   ],
   "fe1dda5c-7c21-45ae-8a77-ca3713a03706": [

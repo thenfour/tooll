@@ -256,12 +256,14 @@ namespace Framefield.Tooll
         {
             switch (type)
             {
-                case FunctionType.Scene: return Color.FromRgb(0x34, 0x4E, 0x51);
-                case FunctionType.Text: return Color.FromRgb(0x3c, 0x4a, 0x30);
-                case FunctionType.Image: return Color.FromRgb(0x4C, 0x34, 0x51);
-                case FunctionType.Generic: return Color.FromRgb(0x4a, 0x47, 0x30);
-                case FunctionType.Mesh: return Color.FromRgb(0x5f, 0x4b, 0x4b);
-                default: return Color.FromRgb(0x4f, 0x4b, 0x4b);
+                // basically anything with 30% hsv Value. bright color = 90% value. dark = 15%.
+                case FunctionType.Scene: return Color.FromRgb(0x34, 0x4E, 0x51);// cyan
+                case FunctionType.Text: return Color.FromRgb(0x3c, 0x4a, 0x30);// green
+                //case FunctionType.Image: return Color.FromRgb(0x4C, 0x34, 0x51);// purple
+                case FunctionType.Image: return Color.FromRgb(0x77, 0x50, 0x80);// purple 775080
+                case FunctionType.Generic: return Color.FromRgb(0x4a, 0x47, 0x30);// yellow
+                case FunctionType.Mesh: return Color.FromRgb(0x5f, 0x4b, 0x4b);// pink
+                default: return Color.FromRgb(0x4f, 0x4b, 0x4b);// gray
             }
         }
 
