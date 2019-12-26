@@ -1,4 +1,25 @@
 {
+  "049327b8-95f8-43ec-8db3-ebe2a371ef5d": [
+    {
+      "ValuesByParameterID": {
+        "08bffee6-6a99-449a-9a10-ae10917a9146": 2.0,
+        "3cf1518f-1878-462c-9bc6-fff76ab96265": 0.0,
+        "6e8990d6-ab86-4395-9ae6-9369376f485d": 0.0,
+        "7116cdb1-85dc-4f19-826f-46e27ed26e1a": 0.0,
+        "78390b92-9fa6-4023-be64-3f1c86853edb": 1.0,
+        "97bbf050-ef75-487e-84f8-c214c953c1c8": 0.5999999,
+        "991fd4c4-605e-4f7d-8a47-892fc43b500d": 1.0,
+        "adc7ed59-9fb4-4030-aef5-273b37472b30": 9.0,
+        "b3f1f853-c182-4a37-ad35-a17987e8ad7b": 0.001,
+        "deb9ae66-7991-482f-b19f-cbad161596d8": 0.0
+      },
+      "OperatorInstanceID": "affa44cb-36bf-415f-937f-bf42383f407d",
+      "MetaOperatorID": "049327b8-95f8-43ec-8db3-ebe2a371ef5d",
+      "IsInstancePreset": true,
+      "Name": null,
+      "Id": "0b9ed7d1-0a46-4543-a117-ac0dc9f1c4a6"
+    }
+  ],
   "0ebfbe6c-58d0-4a37-818d-c9906debaa47": [
     {
       "ValuesByParameterID": {

@@ -2,42 +2,6 @@
   "Resources": [
     {
       "Description": {
-        "Width": 784,
-        "Height": 561,
-        "MipLevels": 1,
-        "ArraySize": 1,
-        "Format": 39,
-        "SampleDescription": {
-          "Count": 1,
-          "Quality": 0
-        },
-        "Usage": 0,
-        "BindFlags": 72,
-        "CpuAccessFlags": 0,
-        "OptionFlags": 0
-      },
-      "Num": 51
-    },
-    {
-      "Description": {
-        "Width": 784,
-        "Height": 561,
-        "MipLevels": 1,
-        "ArraySize": 1,
-        "Format": 10,
-        "SampleDescription": {
-          "Count": 1,
-          "Quality": 0
-        },
-        "Usage": 0,
-        "BindFlags": 40,
-        "CpuAccessFlags": 0,
-        "OptionFlags": 0
-      },
-      "Num": 66
-    },
-    {
-      "Description": {
         "Width": 1,
         "Height": 1,
         "MipLevels": 1,
@@ -52,12 +16,12 @@
         "CpuAccessFlags": 0,
         "OptionFlags": 0
       },
-      "Num": 3
+      "Num": 8
     },
     {
       "Description": {
-        "Width": 784,
-        "Height": 561,
+        "Width": 1424,
+        "Height": 861,
         "MipLevels": 1,
         "ArraySize": 1,
         "Format": 10,
@@ -70,12 +34,48 @@
         "CpuAccessFlags": 0,
         "OptionFlags": 0
       },
-      "Num": 5
+      "Num": 6
     },
     {
       "Description": {
-        "Width": 784,
-        "Height": 561,
+        "Width": 1424,
+        "Height": 861,
+        "MipLevels": 1,
+        "ArraySize": 1,
+        "Format": 39,
+        "SampleDescription": {
+          "Count": 1,
+          "Quality": 0
+        },
+        "Usage": 0,
+        "BindFlags": 72,
+        "CpuAccessFlags": 0,
+        "OptionFlags": 0
+      },
+      "Num": 212
+    },
+    {
+      "Description": {
+        "Width": 1424,
+        "Height": 861,
+        "MipLevels": 1,
+        "ArraySize": 1,
+        "Format": 10,
+        "SampleDescription": {
+          "Count": 1,
+          "Quality": 0
+        },
+        "Usage": 0,
+        "BindFlags": 40,
+        "CpuAccessFlags": 0,
+        "OptionFlags": 0
+      },
+      "Num": 286
+    },
+    {
+      "Description": {
+        "Width": 1424,
+        "Height": 861,
         "MipLevels": 1,
         "ArraySize": 1,
         "Format": 10,
@@ -88,12 +88,12 @@
         "CpuAccessFlags": 0,
         "OptionFlags": 0
       },
-      "Num": 5
+      "Num": 6
     },
     {
       "Description": {
-        "Width": 784,
-        "Height": 561,
+        "Width": 1424,
+        "Height": 861,
         "MipLevels": 1,
         "ArraySize": 1,
         "Format": 39,
@@ -106,7 +106,61 @@
         "CpuAccessFlags": 0,
         "OptionFlags": 0
       },
-      "Num": 5
+      "Num": 6
+    },
+    {
+      "Description": {
+        "Width": 512,
+        "Height": 512,
+        "MipLevels": 1,
+        "ArraySize": 1,
+        "Format": 10,
+        "SampleDescription": {
+          "Count": 1,
+          "Quality": 0
+        },
+        "Usage": 0,
+        "BindFlags": 40,
+        "CpuAccessFlags": 0,
+        "OptionFlags": 0
+      },
+      "Num": 7
+    },
+    {
+      "Description": {
+        "Width": 512,
+        "Height": 512,
+        "MipLevels": 1,
+        "ArraySize": 1,
+        "Format": 39,
+        "SampleDescription": {
+          "Count": 1,
+          "Quality": 0
+        },
+        "Usage": 0,
+        "BindFlags": 72,
+        "CpuAccessFlags": 0,
+        "OptionFlags": 0
+      },
+      "Num": 7
+    },
+    {
+      "Description": {
+        "Width": 712,
+        "Height": 430,
+        "MipLevels": 1,
+        "ArraySize": 1,
+        "Format": 10,
+        "SampleDescription": {
+          "Count": 1,
+          "Quality": 0
+        },
+        "Usage": 0,
+        "BindFlags": 40,
+        "CpuAccessFlags": 0,
+        "OptionFlags": 0
+      },
+      "Num": 1
     },
     {
       "Description": {
