@@ -31,6 +31,8 @@ namespace Framefield.Player
 
         private double _playSpeed = 1.0;
 
+        SlashKickPerformer.StayOn _stayOn = new SlashKickPerformer.StayOn();
+
         public double PlaySpeed
         {
             get { return _playSpeed; }
@@ -50,6 +52,8 @@ namespace Framefield.Player
         public bool Initialize(ContextSettings settings)
         {
             Logger.Info("Initializing ...");
+
+
 
 //            GCSettings.LatencyMode = GCLatencyMode.LowLatency;
 
@@ -514,7 +518,10 @@ namespace Framefield.Player
 
             Utilities.DisposeObj(ref _form);
 
-            Cursor.Show();
+      _stayOn.Dispose();
+      _stayOn = null;
+
+      Cursor.Show();
         }
 
         private void LogHistogram() {

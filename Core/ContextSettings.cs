@@ -17,8 +17,9 @@ namespace Framefield.Core
 
         public ContextSettings()
         {
-            DisplayMode = new DisplayMode() { Width = 0, Height = 0, RefreshRate = 60, Format = Format.A8R8G8B8 };
-            Sampling = 2;
+      //DisplayMode = new DisplayMode() { Width = 0, Height = 0, RefreshRate = 60, Format = Format.A8R8G8B8 };
+      DisplayMode = new DisplayMode() { Width = 1280, Height = 720, RefreshRate = 60, Format = Format.A8R8G8B8 };
+      Sampling = 0;
             AspectRatio = 0;
             FullScreen = true;
             Looped = true;
