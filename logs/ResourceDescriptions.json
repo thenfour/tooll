@@ -2,62 +2,26 @@
   "Resources": [
     {
       "Description": {
-        "Width": 1,
-        "Height": 1,
-        "MipLevels": 1,
-        "ArraySize": 1,
-        "Format": 39,
-        "SampleDescription": {
-          "Count": 1,
-          "Quality": 0
-        },
-        "Usage": 0,
-        "BindFlags": 72,
-        "CpuAccessFlags": 0,
-        "OptionFlags": 0
-      },
-      "Num": 1
-    },
-    {
-      "Description": {
-        "Width": 90,
-        "Height": 90,
-        "MipLevels": 1,
-        "ArraySize": 1,
-        "Format": 10,
-        "SampleDescription": {
-          "Count": 1,
-          "Quality": 0
-        },
-        "Usage": 0,
-        "BindFlags": 40,
-        "CpuAccessFlags": 0,
-        "OptionFlags": 0
-      },
-      "Num": 1
-    },
-    {
-      "Description": {
         "Width": 1264,
         "Height": 681,
         "MipLevels": 1,
         "ArraySize": 1,
-        "Format": 39,
+        "Format": 10,
         "SampleDescription": {
-          "Count": 1,
+          "Count": 4,
           "Quality": 0
         },
         "Usage": 0,
-        "BindFlags": 72,
+        "BindFlags": 40,
         "CpuAccessFlags": 0,
         "OptionFlags": 0
       },
-      "Num": 271
+      "Num": 6
     },
     {
       "Description": {
-        "Width": 1,
-        "Height": 1,
+        "Width": 90,
+        "Height": 90,
         "MipLevels": 1,
         "ArraySize": 1,
         "Format": 10,
@@ -67,24 +31,6 @@
         },
         "Usage": 0,
         "BindFlags": 40,
-        "CpuAccessFlags": 0,
-        "OptionFlags": 0
-      },
-      "Num": 13
-    },
-    {
-      "Description": {
-        "Width": 90,
-        "Height": 90,
-        "MipLevels": 1,
-        "ArraySize": 1,
-        "Format": 39,
-        "SampleDescription": {
-          "Count": 1,
-          "Quality": 0
-        },
-        "Usage": 0,
-        "BindFlags": 72,
         "CpuAccessFlags": 0,
         "OptionFlags": 0
       },
@@ -110,6 +56,60 @@
     },
     {
       "Description": {
+        "Width": 1,
+        "Height": 1,
+        "MipLevels": 1,
+        "ArraySize": 1,
+        "Format": 10,
+        "SampleDescription": {
+          "Count": 1,
+          "Quality": 0
+        },
+        "Usage": 0,
+        "BindFlags": 40,
+        "CpuAccessFlags": 0,
+        "OptionFlags": 0
+      },
+      "Num": 14
+    },
+    {
+      "Description": {
+        "Width": 90,
+        "Height": 90,
+        "MipLevels": 1,
+        "ArraySize": 1,
+        "Format": 39,
+        "SampleDescription": {
+          "Count": 1,
+          "Quality": 0
+        },
+        "Usage": 0,
+        "BindFlags": 72,
+        "CpuAccessFlags": 0,
+        "OptionFlags": 0
+      },
+      "Num": 1
+    },
+    {
+      "Description": {
+        "Width": 1264,
+        "Height": 681,
+        "MipLevels": 1,
+        "ArraySize": 1,
+        "Format": 39,
+        "SampleDescription": {
+          "Count": 1,
+          "Quality": 0
+        },
+        "Usage": 0,
+        "BindFlags": 72,
+        "CpuAccessFlags": 0,
+        "OptionFlags": 0
+      },
+      "Num": 271
+    },
+    {
+      "Description": {
         "Width": 1264,
         "Height": 681,
         "MipLevels": 1,
@@ -125,24 +125,6 @@
         "OptionFlags": 0
       },
       "Num": 368
-    },
-    {
-      "Description": {
-        "Width": 1264,
-        "Height": 681,
-        "MipLevels": 1,
-        "ArraySize": 1,
-        "Format": 10,
-        "SampleDescription": {
-          "Count": 4,
-          "Quality": 0
-        },
-        "Usage": 0,
-        "BindFlags": 40,
-        "CpuAccessFlags": 0,
-        "OptionFlags": 0
-      },
-      "Num": 6
     },
     {
       "Description": {
@@ -251,6 +233,24 @@
         "OptionFlags": 0
       },
       "Num": 6
+    },
+    {
+      "Description": {
+        "Width": 1,
+        "Height": 1,
+        "MipLevels": 1,
+        "ArraySize": 1,
+        "Format": 39,
+        "SampleDescription": {
+          "Count": 1,
+          "Quality": 0
+        },
+        "Usage": 0,
+        "BindFlags": 72,
+        "CpuAccessFlags": 0,
+        "OptionFlags": 0
+      },
+      "Num": 1
     }
   ]
 }
