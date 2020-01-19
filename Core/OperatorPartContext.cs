@@ -163,7 +163,7 @@ namespace Framefield.Core
         private static readonly DefaultRenderer _defaultRenderer = new DefaultRenderer();
 
       private static readonly Dictionary<string, object> __globalObjects = new Dictionary<string, object>();
-    public static SlashKickPerformer.SKPlayerState SKServerState;
+    public static LibToollTenfour.SKPlayerState SKServerState;
   }
 
 }

@@ -31,7 +31,7 @@ namespace Framefield.Player
 
         private double _playSpeed = 1.0;
 
-        SlashKickPerformer.StayOn _stayOn = new SlashKickPerformer.StayOn();
+        LibToollTenfour.StayOn _stayOn = new LibToollTenfour.StayOn();
 
         public double PlaySpeed
         {
@@ -455,12 +455,15 @@ namespace Framefield.Player
             var time = Bass.BASS_ChannelBytes2Seconds(_soundStream, Bass.BASS_ChannelGetPosition(_soundStream, BASSMode.BASS_POS_BYTES));
             if (time >= _soundLength)
             {
-                if (_settings.Looped)
-                    Bass.BASS_ChannelSetPosition(_soundStream, 0);
-                else if (!_exitTimer.IsRunning)
-                    _exitTimer.Restart();
-                else if (_exitTimer.ElapsedMilliseconds >= 2000)
-                    _form.Close();
+        if (_settings.Looped)
+          Bass.BASS_ChannelSetPosition(_soundStream, 0);
+        else if (!_exitTimer.IsRunning)
+          _exitTimer.Restart();
+        else if (_exitTimer.ElapsedMilliseconds >= 2000)
+        {
+          //int a = 0;
+         // _form.Close();
+        }
             }
 
 //            try {
